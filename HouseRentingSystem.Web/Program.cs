@@ -20,6 +20,9 @@ builder.Services.AddDbContext<HouseRentingSystem.Services.Data.HouseRentingDbCon
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+// This is just a comment for testing purposes. 
+
+
 builder.Services.AddDefaultIdentity<User>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
