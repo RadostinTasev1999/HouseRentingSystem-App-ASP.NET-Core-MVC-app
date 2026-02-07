@@ -1,15 +1,18 @@
 pipeline{
     agent any
-    stages{
-        stage("Restore dependencies"){
-            steps{
+
+    stages {
+        stage('Restore dependencies') {
+            steps {
                 bat 'dotnet restore'
             }
             post {
-                always {
-                    echo "Step executed successfully"
+                failure {
+                    echo "Step failed"
                 }
             }
+        }
+            
         stage("Build solution") {
             steps{
                 bat 'dotnet build'
@@ -20,8 +23,6 @@ pipeline{
                 bat 'dotnet test'
             }
         }
-            
-        }
     }
 
     post {
@@ -29,5 +30,5 @@ pipeline{
             echo "Workflow completed successfully"
         }
     }
-    
+
 }
